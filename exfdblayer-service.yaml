@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert -f docker-compose.yml
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: exfdblayer
+  name: exfdblayer
+spec:
+  type: LoadBalancer
+  ports:
+  - name: "8087"
+    port: 8087
+    targetPort: 8087
+  selector:
+    io.kompose.service: exfdblayer
+status:
+  loadBalancer: {}
